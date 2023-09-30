@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq87xcua20rh3"]
+
+[ext_resource type="Script" path="res://entites/spinner/spinner.gd" id="1_e7w4e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8kp8"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qv0kd"]
+material = SubResource("StandardMaterial3D_d8kp8")
+top_radius = 0.25
+bottom_radius = 0.0
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psmt3"]
+shading_mode = 0
+albedo_color = Color(1, 0.411765, 0.537255, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mwu2f"]
+material = SubResource("StandardMaterial3D_psmt3")
+size = Vector3(4, 0.15, 0.5)
+
+[node name="spinner" type="PathFollow3D"]
+script = ExtResource("1_e7w4e")
+
+[node name="body" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_qv0kd")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.15, 0)
+mesh = SubResource("BoxMesh_mwu2f")
+skeleton = NodePath("../..")
+
+[node name="camera_rig" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+top_level = true
+
+[node name="Camera3D" type="Camera3D" parent="camera_rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+near = 15.0
+far = 50.0

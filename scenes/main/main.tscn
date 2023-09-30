@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://gmm4v4jo40ly"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_1nerj"]
+[ext_resource type="PackedScene" uid="uid://d25iyy71omcps" path="res://generators/line/line.tscn" id="2_mtjwx"]
+[ext_resource type="PackedScene" uid="uid://dq87xcua20rh3" path="res://entites/spinner/spinner.tscn" id="3_yikn2"]
+
+[sub_resource type="Environment" id="Environment_2bs88"]
+background_mode = 3
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_1nerj")
+
+[node name="line" parent="." instance=ExtResource("2_mtjwx")]
+
+[node name="spinner" parent="line" instance=ExtResource("3_yikn2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2bs88")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

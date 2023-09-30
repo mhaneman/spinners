@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d25iyy71omcps"]
+
+[ext_resource type="Script" path="res://generators/line/line.gd" id="1_klcvi"]
+
+[sub_resource type="Curve3D" id="Curve3D_odlrp"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 10, 0, 0, 0, 0, 0, 10, 0, 0, -10, 0, 0, 0, 0, -10, -10, 0, 0, 0, 0, 0, 0, 0, -20),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r73tq"]
+shading_mode = 0
+
+[node name="line" type="Path3D"]
+curve = SubResource("Curve3D_odlrp")
+script = ExtResource("1_klcvi")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 0.1, 0.1, 0.1, 0.1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+smooth_faces = true
+material = SubResource("StandardMaterial3D_r73tq")
